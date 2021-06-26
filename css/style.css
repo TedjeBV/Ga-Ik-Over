@@ -41,6 +41,10 @@ div#means-input {
     justify-content: space-around;
 }
 
+input.error {
+    border-color: red;
+}
+
 button {
     background-color: #004682;
     color: white;

@@ -25,9 +25,5 @@
         "wis_combine",
         "netl",
         "entl"
-    ],
-    "norm": {
-        "pass": [],
-        "fail": []
-    }
+    ]
 }

@@ -14,15 +14,15 @@
         "ak": "Aardrijkskunde",
         "maat": "Maatschappijleer",
         "maw": "Maatschappijwetenschappen",
-        "netl": "Nederlandse Taal en Literatuur",
-        "entl": "Engelse Taal en Literatuur",
-        "dutl": "Duitse Taal en Literatuur",
-        "fatl": "Franse Taal en Literatuur",
+        "netl": "Nederlands",
+        "entl": "Engels",
+        "dutl": "Duits",
+        "fatl": "Frans",
         "mu": "Muziek",
         "bv": "Beeldende Vorming",
         "lo": "Lichamelijke opvoeding",
-        "bsm": "Bewegen, sport en maatschappij",
-        "ckv": "Culturele en kunstzinnige vorming",
+        "bsm": "BSM",
+        "ckv": "CKV",
         "km": "Kunst en media"
     }
 }
