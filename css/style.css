@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+body {
+    font-family: 'Open Sans';
+    word-wrap: break-word;
+}
+
+header {
+    background-color: #004682;
+    text-align: center;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.header {
+    margin: 0;
+    color: white;
+}
+
+main {
+    width: 70%;
+    margin: auto;
+}
+
+.warning {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    border: solid red;
+    border-radius: 4px;
+}
+
+div#subject-select {
+    display: grid;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+div#means-input {
+    display: flex;
+    justify-content: space-around;
+}
+
+button {
+    background-color: #004682;
+    color: white;
+    font-family: 'Open Sans';
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    padding: 8px;
+    transition: 0.5s;
+    transition-property: transform color background-color border-color;
+}
+
+button:hover {
+    transform: scale(1.2);
+}
+
+button:active {
+    background-color: white;
+    color: #004682;
+}

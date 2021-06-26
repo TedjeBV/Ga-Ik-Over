@@ -1,8 +1,6 @@
 {
     "subjects": [
-        "wisA",
-        "wisB",
-        "wisC",
+        "wis_combine",
         "wisD",
         "nat",
         "schk",
@@ -24,9 +22,7 @@
         "ckv"
     ],
     "core_subjects": [
-        "wisA",
-        "wisB",
-        "wisC",
+        "wis_combine",
         "netl",
         "entl"
     ],
