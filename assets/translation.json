@@ -1,0 +1,27 @@
+{
+    "nl": {
+        "wisA": "Wiskunde A",
+        "wisB": "Wiskunde B",
+        "wisC": "Wiskunde C",
+        "wisD": "Wiskunde D",
+        "nat": "Natuurkunde",
+        "schk": "Scheikunde",
+        "biol": "Biologie",
+        "econ": "Economie",
+        "beco": "Bedrijfseconomie",
+        "ges": "Geschiedenis",
+        "ak": "Aardrijkskunde",
+        "maat": "Maatschappijleer",
+        "maw": "Maatschappijwetenschappen",
+        "netl": "Nederlandse Taal en Literatuur",
+        "entl": "Engelse Taal en Literatuur",
+        "dutl": "Duitse Taal en Literatuur",
+        "fatl": "Franse Taal en Literatuur",
+        "mu": "Muziek",
+        "bv": "Beeldende Vorming",
+        "lo": "Lichamelijke opvoeding",
+        "bsm": "Bewegen, sport en maatschappij",
+        "ckv": "Culturele en kunstzinnige vorming",
+        "km": "Kunst en media"
+    }
+}
