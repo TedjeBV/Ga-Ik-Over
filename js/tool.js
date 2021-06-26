@@ -10,6 +10,49 @@ function getData() {
     return Promise.all([getJSON('assets/data.json'), getJSON('assets/translation.json')])
 }
 
+
+// Utility code
+gradeFrequency = (grades, request) => {
+    grades = Object.values(grades)
+    const count = new Map([...new Set(grades)].map(
+        x => [x, grades.filter(y => y === x).length]
+    ));
+    let result = count.get(request);
+    if (result === undefined) { result = 0 };
+    return result
+}
+
+lowestGrade = grades => {
+    return Math.min(...Object.values(grades))
+}
+
+subjectsFromGrades = (grades, request) => {
+    let result = Object.keys(grades).find(key => grades[key] === request)
+    console.log(result)
+    if (!Array.isArray(result)) { result = [result] }
+    return result
+}
+
+isCoreSubject = subject => {
+    const core = session.data.core_subjects;
+    return subject.some(r=> core.includes(r))
+}
+
+
+// Checking code
+function check(grades) {
+    console.log('Checking grades')
+    console.table(grades)
+
+    console.log(subjectFromGrades(grades, 7))
+
+    norm.pass.forEach(el => {
+        const out = el(grades)
+        console.log(out)
+    })
+}
+
+
 // Initiate function
 function init() {
     const subjects = session.data.subjects;
@@ -27,10 +70,12 @@ function init() {
         const inputContainer = document.createElement('li');
         inputContainer.classList = 'input-container';
         const input = document.createElement('input');
+        input.type = 'number'
         input.name = element;
         input.min = 1;
         input.max = 10;
         input.step = 0.1;
+        input.required = true;
         input.classList = 'means-input';
         const inputLabel = document.createElement('label');
         inputLabel.for = element;
@@ -64,7 +109,32 @@ function init() {
         // Scroll to next
         const next = document.getElementById(el.target.dataset.scroll);
         if (next !== null) { next.scrollIntoView({ block: 'start',  behavior: 'smooth' }) }
-    })    
+    })
+    
+    document.getElementById('check').addEventListener('click', _ => {
+        let error = false;
+        const means = {}
+        const els = document.getElementsByClassName('means-input')
+        for (let i = 0; i < els.length; i++) {
+            const el = els[i]
+            const value = parseInt(el.value);
+            if (isNaN(value)) {
+                el.classList.add('error', true);
+                error = true;
+                continue;
+            } else if (el.classList.contains('error')) {
+                el.classList.remove('error')
+            }
+            means[el.name] = Math.round(value);
+        }
+
+        if (error) {
+            console.error(`Wasn't able to check grades, an error occured (might not be properly filled in)`)
+            return
+        };
+
+        check(means)
+    })
 }
 
 // Getting the data
