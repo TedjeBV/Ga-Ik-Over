@@ -1,0 +1,36 @@
+{
+    "subjects": [
+        "wisA",
+        "wisB",
+        "wisC",
+        "wisD",
+        "nat",
+        "schk",
+        "biol",
+        "econ",
+        "beco",
+        "ges",
+        "ak",
+        "maat",
+        "maw",
+        "netl",
+        "entl",
+        "dutl",
+        "fatl",
+        "mu",
+        "bv",
+        "lo",
+        "bsm"
+    ],
+    "core_subjects": [
+        "wisA",
+        "wisB",
+        "wisC",
+        "netl",
+        "entl"
+    ],
+    "norm": {
+        "pass": [],
+        "fail": []
+    }
+}
