@@ -49,7 +49,6 @@ input.means-input {
     outline: none;
     transition: 0.5s;
     transition-property: border-color;
-    text-align: end;
 }
 
 input.means-input:focus {
