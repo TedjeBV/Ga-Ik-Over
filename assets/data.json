@@ -25,5 +25,12 @@
         "wis_combine",
         "netl",
         "entl"
+    ],
+    "mandatory_subjects": [
+        "wis_combine",
+        "netl",
+        "entl",
+        "ckv",
+        "lo"
     ]
 }

@@ -24,19 +24,28 @@ gradeFrequency = (grades, request) => {
 
 lowestGrade = grades => {
     return Math.min(...Object.values(grades))
-}
+};
 
 subjectsFromGrades = (grades, request) => {
-    let result = Object.keys(grades).find(key => grades[key] === request)
-    console.log(result)
-    if (!Array.isArray(result)) { result = [result] }
-    return result
-}
+    return Object.keys(grades).filter(k => grades[k] === request);
+};
 
 isCoreSubject = subjects => {
     const core = session.data.core_subjects;
     return subjects.some(r=> core.includes(r))
-}
+};
+
+coreSubjectMatches = subjects => {
+    return subjects.filter(element => session.data.core_subjects.includes(element))
+};
+
+failedSubjects = grades => {
+    const failed = [];
+    for (const [key, value] of Object.entries(grades)) {
+        if (value < 6) { failed.push(key) };
+    };
+    return failed
+};
 
 
 // Checking code
@@ -44,12 +53,14 @@ function check(grades) {
     console.log('Checking grades')
     console.table(grades)
 
-    console.log(subjectsFromGrades(grades, 7))
+    let result = failedSubjects(grades)
 
-    norm.pass.forEach(el => {
-        const out = el(grades)
-        console.log(out)
-    })
+    console.log(result)
+
+    // norm.pass.forEach(el => {
+    //     const out = el(grades)
+    //     console.log(out)
+    // })
 }
 
 
@@ -66,6 +77,7 @@ function init() {
         const box = document.createElement('input');
         box.setAttribute('type', 'checkbox');
         box.setAttribute('name', element);
+
         // Input
         const inputContainer = document.createElement('li');
         inputContainer.classList = 'input-container';
@@ -90,7 +102,7 @@ function init() {
                 inputContainer.remove()
             }
         })
-        if (session.data.core_subjects.includes(element)) {
+        if (session.data.mandatory_subjects.includes(element)) {
             box.checked = true;
             box.disabled = true;
             document.getElementById('means-input').appendChild(inputContainer)
