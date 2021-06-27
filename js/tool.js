@@ -55,6 +55,10 @@ failedSubjects = grades => {
     return failed
 };
 
+gradesMean = grades => {
+    return grades.reduce((a, b) => a + b) / grades.length
+};
+
 
 // Checking code
 function calculate(grades) {
@@ -65,7 +69,7 @@ function calculate(grades) {
         delete grades.ckv;
         delete grades.maat;
     };
-
+    
     console.log('Checking grades..')
     console.table(grades)
 

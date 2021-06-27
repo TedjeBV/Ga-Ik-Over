@@ -27,7 +27,8 @@ norm.pass.push(
         if(
             lowestGrade(grades) >= 4 &&
             gradeFrequency(grades, 4) <= 1 &&
-            !isCoreSubject(subjectsFromGrades(4))
+            !isCoreSubject(subjectsFromGrades(4)) &&
+            gradesMean(gradesFromSubjects(grades, Object.keys(grades))) >= 6
         ) {
             return true
         } else { return false };
@@ -38,7 +39,8 @@ norm.pass.push(
     function(grades) {
         if (
             lowestGrade(grades) >= 5 &&
-            coreSubjectMatches(subjectsFromGrades(grades, 5)).length <= 1
+            coreSubjectMatches(subjectsFromGrades(grades, 5)).length <= 1 &&
+            gradesMean(gradesFromSubjects(grades, Object.keys(grades))) >= 6
         ) {
             return true
         } else { return false };
