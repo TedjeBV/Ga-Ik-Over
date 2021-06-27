@@ -89,6 +89,18 @@ function init() {
         input.step = 0.1;
         input.required = true;
         input.classList = 'means-input';
+        input.addEventListener('input', evt => {
+            if (
+                evt.target.value === '' &&
+                !evt.target.classList.contains('error')
+            ) {
+                evt.target.classList.add('error')
+            };
+
+            if (evt.target.value !== '' && evt.target.classList.contains('error')) {
+                evt.target.classList.remove('error')
+            };
+        })
         const inputLabel = document.createElement('label');
         inputLabel.for = element;
         inputLabel.innerText = names[element] + ': '
@@ -131,7 +143,7 @@ function init() {
             const el = els[i]
             const value = parseInt(el.value);
             if (isNaN(value)) {
-                el.classList.add('error', true);
+                el.classList.add('error');
                 error = true;
                 continue;
             } else if (el.classList.contains('error')) {
@@ -150,9 +162,12 @@ function init() {
 }
 
 // Getting the data
-getData()
-    .then(([data, translation]) => {
-        session.data = data;
-        session.translation = translation
-        init()
-    })
+function start() {
+    getData()
+        .then(([data, translation]) => {
+            session.data = data;
+            session.translation = translation
+            init()
+        })
+}
+window.onload = start

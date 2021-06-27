@@ -41,6 +41,23 @@ div#means-input {
     justify-content: space-around;
 }
 
+input.means-input {
+    font-family: 'Open Sans';
+    margin: 4px;
+    border: none;
+    border-bottom: solid 3px #dddddd;
+    outline: none;
+    transition: 0.5s;
+    transition-property: border-color;
+    text-align: end;
+}
+
+input.means-input:focus {
+    font-family: 'Open Sans';
+    margin: 4px;
+    border-color: #004682;
+}
+
 input.error {
     border-color: red;
 }
