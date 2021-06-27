@@ -23,6 +23,11 @@
         "lo": "Lichamelijke opvoeding",
         "bsm": "BSM",
         "ckv": "CKV",
-        "km": "Kunst en media"
+        "km": "Kunst en media",
+        "close": "Sluit",
+        "pass_text": "Gefeliciteerd! Je gaat over!",
+        "discuss_text": "Dat wordt spannend, je wordt besproken!",
+        "fail_text": "Aaah, je gaat niet over...",
+        "error_text": "OEPS! Er is iets mis gegaan!"
     }
 }

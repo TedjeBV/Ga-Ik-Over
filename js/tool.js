@@ -60,6 +60,57 @@ gradesMean = grades => {
 };
 
 
+// Creating popup
+function modal(result) {
+
+    const text = session.translation.nl
+
+    const container = document.createElement('div');
+    container.id = 'modal-container';
+
+    const modal = document.createElement('div');
+    container.appendChild(modal);
+    modal.id = 'modal';
+
+    const title = document.createElement('h1');
+    modal.appendChild(title);
+    title.id = 'modal-title';
+
+    const closeContainer = document.createElement('div');
+    modal.appendChild(closeContainer);
+    closeContainer.id = 'modal-close-container';
+
+    const close = document.createElement('button');
+    closeContainer.appendChild(close);
+    close.id = 'modal-close';
+    close.addEventListener('click', _ => {
+        container.remove()
+    });
+    close.innerText = text.close;
+
+    switch (result) {
+        
+        case 'pass':
+            title.innerText = text.pass_text;
+            break;
+
+        case 'discuss':
+            title.innerText = text.discuss_text;
+            break;
+
+        case 'fail':
+            title.innerText = text.fail_text;
+            break;
+
+        default:
+            title.innerText = text.error_text;
+            break;
+    }
+
+    document.body.appendChild(container)
+}
+
+
 // Checking code
 function calculate(grades) {
     // Combining CKV and MAAT
@@ -69,7 +120,7 @@ function calculate(grades) {
         delete grades.ckv;
         delete grades.maat;
     };
-    
+
     console.log('Checking grades..')
     console.table(grades)
 
@@ -213,7 +264,8 @@ function init() {
             return
         };
 
-        calculate(means)
+        const result = calculate(means)
+        modal(result);
     })
 }
 
