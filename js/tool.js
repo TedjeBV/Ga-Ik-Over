@@ -125,6 +125,7 @@ function calculate(grades) {
     console.table(grades)
 
     let result = checkNorms(grades)
+    console.log(result)
 
     switch (result.toString()) {
 
@@ -154,20 +155,18 @@ function calculate(grades) {
 };
 
 function checkNorms(grades) {
-    let pass;
-    let fail;
+    const pass = [];
+    const fail = [];
 
     norm.pass.forEach(el => {
-        if (el(grades)) { pass = true }
-        else { pass = false };
+        pass.push(el(grades))
     })
 
     norm.fail.forEach(el => {
-        if (!el(grades)) { fail = false }
-        else { fail = true };
+        fail.push(el(grades))
     })
 
-    return [pass, fail]
+    return [pass.includes(true), fail.includes(true)]
 };
 
 
