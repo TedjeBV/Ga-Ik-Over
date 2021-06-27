@@ -74,18 +74,22 @@ function calculate(grades) {
     switch (result.toString()) {
 
         case [true,false].toString():
+            console.log(`Congrats, you passed!`)
             result = 'pass';
             break;
 
         case [false,false].toString():
+            console.log(`There's still hope! You'll be discussed.`)
             result = 'discuss';
             break;
 
         case [false,true].toString():
+            console.log(`You're not going to make it this year!`)
             result = 'fail';
             break;
 
         default:
+            console.log(`There was an error`)
             result = 'error';
             break;
 
