@@ -73,3 +73,16 @@ norm.fail.push(
         } else { return false };
     }
 )
+
+norm.fail.push(
+    grades => {
+        if(
+            coreSubjectMatches(failedSubjects(grades)).length > 2 &&
+            !(
+                subjectsFromGrades(grades, coreSubjectMatches(failedSubjects(grades))) === [5, 5]
+            )
+        ) {
+            return true
+        } else { return false };
+    }
+);
