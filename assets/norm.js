@@ -27,7 +27,7 @@ norm.pass.push(
         if(
             lowestGrade(grades) >= 4 &&
             gradeFrequency(grades, 4) <= 1 &&
-            !isCoreSubject(subjectFromGrades(4))
+            !isCoreSubject(subjectsFromGrades(4))
         ) {
 
         }

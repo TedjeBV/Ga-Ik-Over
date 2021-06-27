@@ -33,9 +33,9 @@ subjectsFromGrades = (grades, request) => {
     return result
 }
 
-isCoreSubject = subject => {
+isCoreSubject = subjects => {
     const core = session.data.core_subjects;
-    return subject.some(r=> core.includes(r))
+    return subjects.some(r=> core.includes(r))
 }
 
 
@@ -44,7 +44,7 @@ function check(grades) {
     console.log('Checking grades')
     console.table(grades)
 
-    console.log(subjectFromGrades(grades, 7))
+    console.log(subjectsFromGrades(grades, 7))
 
     norm.pass.forEach(el => {
         const out = el(grades)
