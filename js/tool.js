@@ -30,6 +30,14 @@ subjectsFromGrades = (grades, request) => {
     return Object.keys(grades).filter(k => grades[k] === request);
 };
 
+gradesFromSubjects = (grades, subjects) => {
+    let results = [];
+    subjects.forEach(sbj => {
+        results.push(grades[sbj])
+    })
+    return results;
+}
+
 isCoreSubject = subjects => {
     const core = session.data.core_subjects;
     return subjects.some(r=> core.includes(r))
@@ -49,19 +57,59 @@ failedSubjects = grades => {
 
 
 // Checking code
-function check(grades) {
-    console.log('Checking grades')
+function calculate(grades) {
+    // Combining CKV and MAAT
+
+    if (grades.ckv !== undefined && grades.maat !== undefined) {
+        grades.combine = Math.round((grades.ckv + grades.maat) / 2)
+        delete grades.ckv;
+        delete grades.maat;
+    };
+
+    console.log('Checking grades..')
     console.table(grades)
 
-    let result = failedSubjects(grades)
+    let result = checkNorms(grades)
 
-    console.log(result)
+    switch (result.toString()) {
 
-    // norm.pass.forEach(el => {
-    //     const out = el(grades)
-    //     console.log(out)
-    // })
-}
+        case [true,false].toString():
+            result = 'pass';
+            break;
+
+        case [false,false].toString():
+            result = 'discuss';
+            break;
+
+        case [false,true].toString():
+            result = 'fail';
+            break;
+
+        default:
+            result = 'error';
+            break;
+
+    };
+
+    return result
+};
+
+function checkNorms(grades) {
+    let pass;
+    let fail;
+
+    norm.pass.forEach(el => {
+        if (el(grades)) { pass = true }
+        else { pass = false };
+    })
+
+    norm.fail.forEach(el => {
+        if (!el(grades)) { fail = false }
+        else { fail = true };
+    })
+
+    return [pass, fail]
+};
 
 
 // Initiate function
@@ -141,7 +189,7 @@ function init() {
         const els = document.getElementsByClassName('means-input')
         for (let i = 0; i < els.length; i++) {
             const el = els[i]
-            const value = parseInt(el.value);
+            const value = parseFloat(el.value);
             if (isNaN(value)) {
                 el.classList.add('error');
                 error = true;
@@ -157,7 +205,7 @@ function init() {
             return
         };
 
-        check(means)
+        calculate(means)
     })
 }
 
