@@ -27,7 +27,7 @@ norm.pass.push(
         if(
             lowestGrade(grades) >= 4 &&
             gradeFrequency(grades, 4) <= 1 &&
-            !isCoreSubject(subjectsFromGrades(4)) &&
+            !isCoreSubject(subjectsFromGrades(grades, 4)) &&
             gradesMean(gradesFromSubjects(grades, Object.keys(grades))) >= 6
         ) {
             return true
